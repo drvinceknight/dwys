@@ -11,7 +11,14 @@ def test_diff_with_diff_python():
     assert list(dwys.diff(input_code=input_code, expected_output_code=output_code,
         execution_command="python")) == ['--- \n', '+++ \n', '@@ -6 +5,0 @@\n', '-1']
 
-# def test_diff_with_no_diff_R():
-    # input_code = ["a <- 4 + 4\nb <- a + 3\n, print(a + b)\n"]
-    # output_code = ['19']
-    # assert list(dwys.diff(input_code=input_code, output_code=output_code, execution_command="Rscript")) == []
+def test_diff_with_no_diff_R():
+    input_code = ["a <- 4 + 4\nb <- a + 3\nprint(a + b)\n"]
+    output_code = ['[1] 19\n']
+    assert list(dwys.diff(input_code=input_code,
+        expected_output_code=output_code, execution_command="Rscript")) == []
+
+def test_diff_with_diff_R():
+    input_code = ["a <- 4 + 4\nb <- a + 3\nprint(a + b)\n"]
+    output_code = ['[1] 191\n']
+    assert list(dwys.diff(input_code=input_code,
+        expected_output_code=output_code, execution_command="Rscript")) == ['--- \n', '+++ \n', '@@ -7 +6,0 @@\n', '-1']

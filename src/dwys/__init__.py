@@ -29,5 +29,6 @@ def diff(input_code, expected_output_code, execution_command, input_filename=Non
 
     completed_process = subprocess.run([execution_command, input_filename], capture_output=True)
     output = completed_process.stdout.decode("utf-8")
+    
 
     return difflib.unified_diff("\n".join(expected_output_code), output, n=0)
