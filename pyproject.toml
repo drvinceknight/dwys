@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "dwys"
+version = "0.0.1"
+description = "A language agnostic doctesting library"
+authors = ["Vince Knight <vincent.knight@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
