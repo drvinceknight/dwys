@@ -1,5 +1,6 @@
-import dwys
 import re
+
+import dwys
 
 
 def test_parser_with_basic_delimiters():

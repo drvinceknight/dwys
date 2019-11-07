@@ -8,3 +8,4 @@ install:
 script:
 - poetry run pytest
 - poetry run black . --check
+- poetry run isort -rc . --check-only

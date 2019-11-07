@@ -1,7 +1,7 @@
 import difflib
-import tempfile
 import re
 import subprocess
+import tempfile
 
 
 def parse(string, in_pattern, out_pattern=None):
