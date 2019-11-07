@@ -5,6 +5,7 @@ before_install:
 - pip install poetry
 install:
 - poetry install
+- sudo apt-get install -y r-base
 script:
 - poetry run pytest
 - poetry run black . --check
