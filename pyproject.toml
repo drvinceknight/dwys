@@ -9,3 +9,5 @@ license = "MIT"
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
+pytest = "^5.2.2"
+black = "^19.3b0"

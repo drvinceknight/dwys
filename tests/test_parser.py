@@ -1,6 +1,7 @@
 import dwys
 import re
 
+
 def test_parser_with_basic_delimiters():
     text = """
 Here is some text with some python code:
@@ -28,12 +29,14 @@ Output end.
     out_pattern = re.compile(r"Output starts:\n(.*?)Output end", re.DOTALL)
 
     input_code, output_code = dwys.parse(
-            string=text,
-            in_pattern=in_pattern,
-            out_pattern=out_pattern,
-            )
-    assert input_code == ["a = 4 + 4\nb = a + 3\n", "weights = [12, 15, 10]\nfor weight in weights:\n    print(weight)\n"]
-    assert output_code == ['12\n15\n10\n']
+        string=text, in_pattern=in_pattern, out_pattern=out_pattern
+    )
+    assert input_code == [
+        "a = 4 + 4\nb = a + 3\n",
+        "weights = [12, 15, 10]\nfor weight in weights:\n    print(weight)\n",
+    ]
+    assert output_code == ["12\n15\n10\n"]
+
 
 def test_parser_with_latex_delimiters():
     text = r"""
@@ -62,9 +65,10 @@ for weight in weights:
     out_pattern = re.compile(r"\\begin\{pyout\}\n(.*?)\\end\{pyout\}", re.DOTALL)
 
     input_code, output_code = dwys.parse(
-            string=text,
-            in_pattern=in_pattern,
-            out_pattern=out_pattern,
-            )
-    assert input_code == ["a = 4 + 4\nb = a + 3\n", "weights = [12, 15, 10]\nfor weight in weights:\n    print(weight)\n"]
-    assert output_code == ['12\n15\n10\n']
+        string=text, in_pattern=in_pattern, out_pattern=out_pattern
+    )
+    assert input_code == [
+        "a = 4 + 4\nb = a + 3\n",
+        "weights = [12, 15, 10]\nfor weight in weights:\n    print(weight)\n",
+    ]
+    assert output_code == ["12\n15\n10\n"]
