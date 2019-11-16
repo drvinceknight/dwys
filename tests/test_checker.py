@@ -1,6 +1,6 @@
-import dwys
 import pytest
 
+import dwys
 
 def test_diff_with_no_diff_python():
     input_code = [
