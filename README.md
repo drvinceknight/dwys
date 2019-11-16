@@ -58,7 +58,7 @@ input_code, output_code = dwys.parse(
     string=text, in_pattern=in_pattern, out_pattern=out_pattern
 )
 
-# Obtain a diff with the `Rscript` command
+# Obtain a diff and the output with the `Rscript` command
 dwys.diff(
     input_code=input_code,
     expected_output_code=output_code,

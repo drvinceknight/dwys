@@ -36,4 +36,4 @@ def diff(input_code, expected_output_code, execution_command, input_filename=Non
     output = completed_process.stdout.decode("utf-8")
 
     # TODO Make the diff usable.
-    return difflib.unified_diff("\n".join(expected_output_code), output, n=0)
+    return difflib.unified_diff("\n".join(expected_output_code), output, n=0), output
