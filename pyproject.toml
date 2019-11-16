@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dwys"
-version = "0.0.2"
+version = "0.0.3"
 description = "A language agnostic doctesting library"
 authors = ["Vince Knight <vincent.knight@gmail.com>"]
 license = "MIT"
