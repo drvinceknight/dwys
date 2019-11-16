@@ -8,7 +8,7 @@ def parse(string, in_pattern, out_pattern=None):
     """
     Parse a given input text to recover input code blocks and output code
     blocks.
-    """
+j   """
     input_code = re.findall(pattern=in_pattern, string=string)
     if out_pattern is not None:
         output_code = re.findall(pattern=out_pattern, string=string)
@@ -33,7 +33,8 @@ def diff(input_code, expected_output_code, execution_command, input_filename=Non
         [execution_command, input_filename], capture_output=True
     )
     assert completed_process.stderr == b"", "Syntax error in code"
-    output = completed_process.stdout.decode("utf-8")
+    output = completed_process.stdout.decode("utf-8").rstrip()
 
+    expected_output = "\n".join(expected_output_code)
     # TODO Make the diff usable.
-    return difflib.unified_diff("\n".join(expected_output_code), output, n=0), output
+    return difflib.unified_diff(expected_output, output, n=2), output, expected_output
