@@ -17,7 +17,13 @@ j   """
     return input_code, output_code
 
 
-def diff(input_code, expected_output_code, execution_command, input_filename=None):
+def diff(
+    input_code,
+    expected_output_code,
+    execution_command,
+    input_filename=None,
+    spacing="\n\n",
+):
     """
     Run the input code with the specified <execuation_command>, and generates a
     diff with the output code.
@@ -26,8 +32,12 @@ def diff(input_code, expected_output_code, execution_command, input_filename=Non
         input_filename = tempfile.NamedTemporaryFile().name
 
     with open(input_filename, "w") as file_to_write:
-        for code_snippet in input_code:
-            file_to_write.write(code_snippet)
+        if input_code != []:
+            for code_snippet in input_code[:-1]:
+                file_to_write.write(code_snippet)
+                file_to_write.write(spacing)
+
+            file_to_write.write(input_code[-1])
 
     completed_process = subprocess.run(
         [execution_command, input_filename], capture_output=True
